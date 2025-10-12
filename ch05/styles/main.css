@@ -1,4 +1,92 @@
+:root {
+    --primary-color: rebeccapurple;
+    --secondary-background: aliceblue;
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+html {
+    background-color: var(--secondary-background);
+    
+}
+
 body {
-	font-family: Arial, Helvetica, sans-serif;
+    font-family: Arial, Helvetica, sans-serif;
     font-size: 100%;
+    width: 90%;
+    margin: 20px auto;
+    border: 5px double var(--primary-color);
+    background-color: #fff; 
+}
+
+main {
+    padding: 1.5em;
+    overflow: auto;
+}
+
+footer {
+    border-top: 2px solid var(--primary-color);
+    padding-top: 10px;
+}
+
+h1 {
+    font-size: 150%;
+    color: var(--primary-color);
+}
+
+h2 {
+    font-size: 125%;
+    margin-top: 1.5em;
+}
+
+h3 {
+    font-size: 115%;
+}
+
+h1, h2, h3 {
+    margin-bottom: 0.5em;
+}
+
+p {
+    margin-bottom: 1em;
+}
+
+blockquote {
+    margin: 1em 0;
+}
+
+ul {
+    margin: 1em 0 1em 2em;
+}
+
+li {
+    margin-bottom: 0.5em;
+}
+
+cite {
+    color: var(--primary-color);
+    font-style: normal;
+    font-weight: bold;
+    display: block;
+    margin-top: -0.5em;
+}
+
+img {
+    float: left;
+    margin: 0 1.5em 1em 0;
+}
+
+h2:nth-of-type(1) {
+    clear: left;
+}
+
+footer p {
+    font-size: 90%;
+    font-weight: bold;
+    text-align: center;
+    padding: 5px 0;
 }
