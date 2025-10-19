@@ -60,6 +60,7 @@ header {
 /* the styles for the main element */
 main {
 	clear: left;
+	display: flex;
 }
 
 /* the styles for the section */
@@ -112,4 +113,19 @@ footer {
 		color: white;
 		padding-bottom: 0; 
 	}
+}
+
+section{
+	flex: 3;
+	order:2;
+}
+
+#guests{
+	flex:1;
+	order: 1;
+}
+
+#changes{
+	flex: 1;
+	order: 3;
 }
