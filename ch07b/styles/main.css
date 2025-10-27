@@ -1,22 +1,23 @@
 /* variables */
+/* variables */
 :root {
-	--primary-color: #931420;
-	--accent-color: #f6bb73;
-	--light-accent: #fffded;
-	--light: white;
-	--dark: black;
+    --primary-color: #931420;
+    --accent-color: #f6bb73;
+    --light-accent: #fffded;
+    --light: white;
+    --dark: black;
 }
 
 /* reset */
 * {
-	margin: 0;
-	padding: 0;
-	box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
 }
 
 /* the default styles for the elements */
 body {
-	font-family: Arial, Helvetica, sans-serif;
+    font-family: Arial, Helvetica, sans-serif;
     font-size: 100%;
     width: 80%;
     margin: auto;
@@ -32,82 +33,158 @@ a:focus, a:hover { font-style: italic; }
 
 /* the styles for the header */
 header {
-	border-bottom: 3px solid var(--primary-color);
-	background-image: linear-gradient(30deg, 
-		var(--accent-color) 0%, 
-		var(--light-accent) 25%, 
-		var(--light) 50%, 
-		var(--light-accent) 75%, 
-		var(--accent-color) 100%);
-	& h2 {
-		font-size: 175%;
-		color: var(--primary-color);
-		padding-bottom: 0;
-	}
-	& h3 {
-		font-size: 130%;
-		font-style: italic;
-	}
-	& img {
-		float: left;
-		margin: 0 30px;
-		width: clamp(40px, 15%, 66px);
-	}
+    border-bottom: 3px solid var(--primary-color);
+    background-image: linear-gradient(30deg, 
+        var(--accent-color) 0%, 
+        var(--light-accent) 25%, 
+        var(--light) 50%, 
+        var(--light-accent) 75%, 
+        var(--accent-color) 100%);
+}
+header h2 {
+    font-size: 175%;
+    color: var(--primary-color);
+    padding-bottom: 0;
+}
+header h3 {
+    font-size: 130%;
+    font-style: italic;
+}
+header img {
+    float: left;
+    margin: 0 30px;
+    width: clamp(40px, 15%, 66px);
+}
+
+/* ================== */
+/* NEW NAV MENU STYLES */
+/* ================== */
+.navbar {
+    clear: left; /* Clear the floated header image */
+    background-color: var(--primary-color);
+}
+
+.menu {
+    display: flex;
+    flex-wrap: wrap; /* Allows items to wrap on small screens */
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+.menu li {
+    position: relative; /* Required for submenu positioning */
+}
+
+.menu a {
+    display: block; /* Makes the whole link area clickable */
+    padding: 0.75em 1.5em;
+    text-decoration: none;
+    color: var(--light);
+    font-weight: normal;
+}
+
+/* Current page link styling */
+.menu .current > a {
+    font-weight: bold;
+    color: var(--accent-color);
+}
+
+/* Current page hover override */
+.menu .current > a:hover {
+    font-style: normal;
+}
+
+/* Submenu styles */
+.submenu {
+    display: none; /* Hidden by default */
+    position: absolute;
+    top: 100%; /* Position directly below the parent */
+    left: 0;
+    background-color: var(--primary-color); /* Matches footer background */
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    min-width: 200px; /* Give submenu some width */
+    z-index: 10; /* Ensure it's on top of main content */
+    border-top: 2px solid var(--accent-color); /* Added for visual separation */
+}
+
+/* Show submenu on parent hover */
+.menu li:hover > .submenu {
+    display: block;
+}
+
+.submenu li {
+    padding: 0; /* Reset padding for submenu list items */
+}
+
+.submenu a {
+    padding: 0.5em 1em 0.5em 1.5em; /* Adjusted padding for better visual alignment */
+    width: 100%;
+    color: var(--light); /* Ensure text is white */
+    white-space: nowrap; /* Prevent speaker names from wrapping */
+	line-height: 1.4;
+}
+
+.submenu a:hover {
+    font-style: italic; /* Apply hover effect to submenu items */
 }
 
 /* the styles for the main element */
 main {
-	clear: left;
-	display: flex;
+    clear: left;
+    display: flex;
 }
 
 /* the styles for the section */
 section {
-	flex-basis: 75%;
-	& h1 {
-		color: var(--primary-color);
-	}
-	& article + h2 {
-		clear: left;
-		color: var(--primary-color);
-		border-top: 3px solid var(--primary-color);
-		padding-top: .5em;
-	}
+    flex-basis: 75%;
+}
+section h1 {
+    color: var(--primary-color);
+}
+section article + h2 {
+    clear: left;
+    color: var(--primary-color);
+    border-top: 3px solid var(--primary-color);
+    padding-top: .5em;
 }
 
 /* the styles for the article */
 article {
-	padding-top: .5em;
-	margin-bottom: .5em;
-	& img {
-		float: left;
-		margin: .25em 1em 1em 0;
-		border: 1px solid var(--dark);
-		width: min(100%, 225px);
-	}
+    padding-top: .5em;
+    margin-bottom: .5em;
+}
+article img {
+    float: left;
+    margin: .25em 1em 1em 0;
+    border: 1px solid var(--dark);
+    width: min(100%, 225px);
 }
 
 /* the styles for the aside */
 aside {
-	flex-basis: 25%;
-	& h2 {
-		color: var(--primary-color);
-	}
-	& img {
-		margin-bottom: .9em;
-	}
-	& blockquote {
-		font-style: italic;
-		margin-left: .5em;
-	}
+    flex-basis: 25%;
+}
+aside h2 {
+    color: var(--primary-color);
+}
+/* Removed aside img styling as per changes */
+/* aside img {
+    margin-bottom: .9em;
+} */
+aside blockquote {
+    font-style: italic;
+    margin-left: .5em;
 }
 
 /* the styles for the footer */
 footer {
-	background-color: var(--primary-color);
-	& p {
-		text-align: center;
-		color: white;
-		padding-bottom: 0; 
-	}
+    background-color: var(--primary-color);
+}
+footer p {
+    text-align: center;
+    color: white;
+    padding-bottom: 0; 
 }
