@@ -2,83 +2,217 @@
 <html>
 <head>
     <meta charset="utf-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Employee table</title>
-	<style>
-		body {
-			font-family: Arial, Helvetica, sans-serif;
+    <style>
+        body {
+            font-family: Arial, Helvetica, sans-serif;
             font-size: 100%;
-			width: 80%;
-			margin: 1em auto;
-		}
-		table {
-			border-collapse: collapse;
-			border: 1px solid black;
-		}
-		thead {
-			background-color: lightgreen;
-		}
-		th, td {
-			border: 1px solid black;
-			padding: .35em 1em .35em .5em;
-			text-align: left;
-			vertical-align: middle;
-		}
-		tbody tr:nth-child(even) td {
-			background-color: lightgrey;
-		}
-        tbody td:last-child {
+            width: 80%;
+            margin: 1em auto;
+        }
+
+        table {
+            border-collapse: collapse;
+            border: 1px solid black;
+            width: 100%;
+        }
+
+        caption {
+            font-size: 150%;
+            font-weight: bold;
+            margin-bottom: .5em;
+        }
+
+        thead {
+            background-color: lightgreen;
+        }
+
+        th,
+        td {
+            padding: .5em .2em .5em .2em;
+            text-align: left;
+            vertical-align: top;
+        }
+
+        tbody tr {
+            border-bottom: 1px solid black;
+        }
+
+        tbody th[scope="rowgroup"] {
+            border-bottom: none;
+        }
+
+        tfoot {
+            background-color: lightgreen;
+            font-weight: bold;
+        }
+
+        tfoot td:first-child {
+            text-align: right;
+            border: none;
+        }
+
+        tbody td:last-child,
+        tfoot td:last-child {
             text-align: right;
         }
-	</style>
+
+        /* --- MOBILE STYLES (Screen width < 640px) --- */
+        @media screen and (max-width: 640px) {
+            caption {
+                display: block;
+                width: 100%;
+                text-align: center;
+                font-size: 150%;
+                font-weight: bold;
+                white-space: nowrap;
+                margin: 15px 0;
+            }
+
+            /* Hide table header */
+            thead {
+                display: none;
+            }
+
+            tbody tr,
+            tfoot tr {
+                border-bottom: none;
+            }
+
+            /* FIXED HERE: Added 'tfoot' to this list so it doesn't disappear */
+            table,
+            tbody,
+            tfoot, 
+            td,
+            th {
+                display: block;
+            }
+            
+            tr {
+                margin-bottom: 0;
+                border: none;
+                display: block;
+            }
+
+            .category-cell {
+                display: block;
+                background-color: lightgreen;
+                font-weight: bold;
+                padding: 12px;
+                font-size: 1.2em;
+                border-top: 1px solid #000;
+            }
+
+            td {
+                border: 1px solid #000;
+                padding: 10px;
+                background: white;
+            }
+
+            .name-cell {
+                background: #e5e5e5;
+            }
+
+            .years {
+                display: flex;
+                justify-content: space-between;
+                background: white;
+            }
+
+            .years::before {
+                content: "Years of Service:";
+            }
+
+            /* Footer Flexbox Logic */
+            tfoot tr {
+                display: flex;
+                width: 100%;
+                padding: 0;
+                margin: 0;
+            }
+
+            tfoot td {
+                background: lightgreen;
+                font-weight: bold;
+                border: 1px solid black;
+                padding: 12px;
+                display: block; 
+            }
+
+            /* "Total Years" label grows to fill space */
+            tfoot td:first-child {
+                flex-grow: 1;
+                text-align: left;
+                border-right: none; 
+            }
+
+            /* "135" sits on the right */
+            tfoot td:last-child {
+                text-align: right;
+                border-left: none;
+            }
+        }
+    </style>
 </head>
 
 <body>
-<table>
-	<thead>
-		<tr>
-			<th>Name</th>
-			<th>E-mail</th>
-			<th class="right">Years of Service</th>
-		</tr>
-	</thead>
-	<tbody>
-		<tr>
-			<td>Joel Murach</td>
-			<td>joelmurach@yahoo.com</td>
-			<td>22</td>
-		</tr>
-		<tr>
-			<td>Anne Boehm</td>
-			<td>anne@murach.com</td>
-			<td>34</td>
-		</tr>
-		<tr>
-			<td>Zak Ruvalcaba</td>
-			<td>zak@modulemedia.com</td>
-			<td>4</td>
-		</tr>
-		<tr>
-			<td>Judy Taylor</td>
-			<td>judy@murach.com</td>
-			<td>39</td>
-		</tr>
-		<tr>
-			<td>Bethany Lee</td>
-			<td>bethany@murach.com</td>
-			<td>10</td>
-		</tr>
-		<tr>
-			<td>Kelly Slivkoff</td>
-			<td>kelly@murach.com</td>
-			<td>25</td>
-		</tr>
-		<tr>
-			<td>Juliette Baylon</td>
-			<td>juliette@murach.com</td>
-			<td>1</td>
-		</tr>
-	</tbody>
-</table>
+    <table>
+        <caption>Employee Table</caption>
+        <thead>
+            <tr>
+                <th>Department</th>
+                <th>Name</th>
+                <th>E-mail</th>
+                <th>Years of Service</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <th class="category-cell" rowspan="3" scope="rowgroup">Editorial</th>
+                <td class="name-cell">Joel Murach</td>
+                <td>joelmurach@yahoo.com</td>
+                <td class="years">22</td>
+            </tr>
+            <tr>
+                <td class="name-cell">Anne Boehm</td>
+                <td>anne@murach.com</td>
+                <td class="years">34</td>
+            </tr>
+            <tr>
+                <td class="name-cell">Zak Ruvalcaba</td>
+                <td>zak@modulemedia.com</td>
+                <td class="years">4</td>
+            </tr>
+            <tr>
+                <th class="category-cell" rowspan="2" scope="rowgroup">Marketing</th>
+                <td class="name-cell">Judy Taylor</td>
+                <td>judy@murach.com</td>
+                <td class="years">39</td>
+            </tr>
+            <tr>
+                <td class="name-cell">Bethany Lee</td>
+                <td>bethany@murach.com</td>
+                <td class="years">10</td>
+            </tr>
+            <tr>
+                <th class="category-cell" rowspan="2" scope="rowgroup">Customer Service</th>
+                <td class="name-cell">Kelly Slivkoff</td>
+                <td>kelly@murach.com</td>
+                <td class="years">25</td>
+            </tr>
+            <tr>
+                <td class="name-cell">Juliette Baylon</td>
+                <td>juliette@murach.com</td>
+                <td class="years">1</td>
+            </tr>
+        </tbody>
+        <tfoot>
+            <tr>
+                <td class="category-cell" colspan="3">Total Years of Service</td>
+                <td>135</td>
+            </tr>
+        </tfoot>
+    </table>
 </body>
 </html>
