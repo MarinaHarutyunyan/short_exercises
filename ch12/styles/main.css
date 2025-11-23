@@ -1,7 +1,11 @@
+
 /* variables */
 :root {
     --light: white;
     --dark: black;
+    --success: #357a35; 
+    --failure: #dc3545; 
+    --border-color: #ccc;
 }
 
 /* reset */
@@ -29,7 +33,73 @@ input, select, button {
     padding: .25em;
     margin-bottom: .5em;
     border-radius: 5px;
+    border: 1px solid var(--border-color); 
 }
 label {
     display: block;
+}
+
+fieldset {
+    border: 1px solid var(--border-color);
+    padding: 1em;
+    margin-bottom: 1.5em;
+    border-radius: 5px;
+}
+legend {
+    font-weight: bold;
+    padding: 0 .5em;
+    margin-left: -.5em; 
+}
+
+select {
+    width: 30%; 
+    min-width: 150px;
+}
+textarea {
+    border: 1px solid var(--border-color);
+    padding: .5em;
+    min-height: 5em;
+    resize: vertical;
+    border-radius: 5px;
+}
+
+input:required:valid, 
+textarea:required:valid {
+    border: 2px solid var(--success); 
+}
+
+input:required:invalid,
+textarea:required:invalid {
+    border: 2px solid var(--failure); 
+}
+
+
+.buttons {
+    display: flex; 
+    gap: 1em;
+    margin-top: 1em;
+    width: 100%;
+}
+
+.btn {
+    width: auto;
+    color: var(--light);
+    font-weight: bold;
+    padding: .5em .75em;
+    border: none;
+    cursor: pointer;
+}
+
+.btn-submit {
+    background-color: var(--success);
+}
+.btn-submit:hover {
+    background-color: #275d27; 
+}
+
+.btn-reset {
+    background-color: var(--failure);
+}
+.btn-reset:hover {
+    background-color: #a72332; 
 }
